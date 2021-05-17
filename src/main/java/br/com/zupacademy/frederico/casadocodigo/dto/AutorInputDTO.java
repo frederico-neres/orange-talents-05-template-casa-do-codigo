@@ -19,7 +19,8 @@ public class AutorInputDTO {
     @Size(max = 400)
     private String descricao;
 
-    public AutorInputDTO(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
+    public AutorInputDTO(@NotBlank String nome, @NotBlank @Email String email,
+                         @NotBlank @Size(max = 400) String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
