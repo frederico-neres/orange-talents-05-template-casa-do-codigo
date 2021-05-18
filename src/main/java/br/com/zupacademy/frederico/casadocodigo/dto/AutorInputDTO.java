@@ -29,4 +29,8 @@ public class AutorInputDTO {
     public Autor toEntity() {
         return new Autor(nome, email, descricao);
     }
+
+    public String getEmail() {
+        return email;
+    }
 }
