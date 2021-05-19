@@ -1,6 +1,8 @@
 package br.com.zupacademy.frederico.casadocodigo.dto;
 
+import br.com.zupacademy.frederico.casadocodigo.annotation.UniqueValue;
 import br.com.zupacademy.frederico.casadocodigo.model.Autor;
+import br.com.zupacademy.frederico.casadocodigo.model.Categoria;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +15,9 @@ public class AutorInputDTO {
 
     @NotBlank
     @Email
+    @UniqueValue(fieldName = "email",
+            domainClass = Autor.class,
+            message = "Já existe um(a) autor(a) cadastrado(a) com esse e-mail")
     private String email;
 
     @NotBlank
