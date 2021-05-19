@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
+    Boolean existsByNome(String nome);
 }

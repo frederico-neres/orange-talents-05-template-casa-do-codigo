@@ -19,4 +19,8 @@ public class CategoriaInputDTO {
     public Categoria toModel() {
         return  new Categoria(nome);
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
