@@ -1,6 +1,5 @@
 package br.com.zupacademy.frederico.casadocodigo.model;
 
-import br.com.zupacademy.frederico.casadocodigo.annotation.AlreadyExists;
 import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.*;

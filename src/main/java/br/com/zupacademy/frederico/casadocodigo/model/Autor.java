@@ -5,7 +5,6 @@ import javax.validation.constraints.*;
 import java.time.OffsetDateTime;
 
 @Entity
-
 public class Autor {
 
     @Id
