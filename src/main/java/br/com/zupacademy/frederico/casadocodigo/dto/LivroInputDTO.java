@@ -8,7 +8,6 @@ import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Lob;
-import javax.persistence.Query;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -54,22 +53,10 @@ public class LivroInputDTO {
     }
 
     public Livro toModel(EntityManager entityManager) {
-        Object categoriaResult = findEntityById(idCategoria, "Categoria", entityManager);
-        Object autorResult = findEntityById(idAutor, "Autor", entityManager);
-
-        Categoria categoria = (Categoria) categoriaResult;
-        Autor autor = (Autor) autorResult;
+        Categoria categoria = entityManager.find(Categoria.class, idCategoria);
+        Autor autor = entityManager.find(Autor.class, idAutor);
 
         return new Livro(titulo, resumo, sumario, preco, numeroPaginas,
                 isbn, dataPublicacao,  categoria, autor);
-    }
-
-    private Object findEntityById(Long id, String className, EntityManager entityManager) {
-        String jpql = "SELECT o FROM "+className+" o WHERE id = :value";
-
-        Query query = entityManager.createQuery(jpql);
-        query.setParameter("value", id);
-        Object entity = query.getSingleResult();
-        return entity;
     }
 }
