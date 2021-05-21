@@ -4,6 +4,7 @@ import br.com.zupacademy.frederico.casadocodigo.handler.dto.ArgumentNotValidExce
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,7 +20,8 @@ public class ArgumentException {
   public ArgumentNotValidExceptionDTO argumentNotValidException(MethodArgumentNotValidException exception) {
         BindingResult bindingResult = exception.getBindingResult();
         List<FieldError> fieldErros = bindingResult.getFieldErrors();
+        List<ObjectError> globalErrors = bindingResult.getGlobalErrors();
 
-        return new ArgumentNotValidExceptionDTO(fieldErros);
+        return new ArgumentNotValidExceptionDTO(fieldErros, globalErrors);
     }
 }
